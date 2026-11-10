@@ -24,5 +24,15 @@ namespace PojetoForms
         {
 
         }
+
+        private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("O Senhor é o ");
+        }
+
+        private void pessoaFisicaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

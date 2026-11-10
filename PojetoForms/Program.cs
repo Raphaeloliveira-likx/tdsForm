@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoForms.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,20 @@ namespace PojetoForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            
+            frmLogin telaLogin = new frmLogin();
+
+            if(telaLogin.ShowDialog() == DialogResult.OK)
+            {
+                login usuarioLogado = telaLogin.usuarioEncontrado;
+                Application.Run(new frmMenu_Principal(usuarioLogado));
+            }
+            else
+            {
+                Application.Exit();
+            }
+
+                Application.Run(new frmLogin());
         }
     }
 }

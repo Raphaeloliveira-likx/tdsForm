@@ -16,6 +16,8 @@ namespace PojetoForms
     {
 
         /// ListUsuario
+        List<login> usuarios = new List<login>();
+        public login usuarioEncontrado;
         public frmLogin()
         {
             InitializeComponent();
@@ -25,8 +27,8 @@ namespace PojetoForms
 
 
             login user1 = new login(1,"Arthur" ,"adm01@gmail.com", "adm123", "Administrador");
-            login user2 = new login(1, "operador2@gmail.com", "123quatro", "Operador");
-            login user3 = new login(1, "operador3@gmail.com", "um2três", "Operador");
+            login user2 = new login(1, "Caio","operador2@gmail.com", "123quatro", "Operador");
+            login user3 = new login(1, "Roberta","operador3@gmail.com", "um2três", "Operador");
 
             usuarios.Add(user1);
             usuarios.Add(user2);
@@ -38,12 +40,12 @@ namespace PojetoForms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string textoLogin = this.txtLogin.Text;
-            string textoSenha = this.txtPassword.Text;
+            string textoLogin = this.textLogin.Text;
+            string textoSenha = this.textPassword.Text;
 
             if (string.IsNullOrWhiteSpace(textoLogin))
             {
-                this.txtLogin.BackColor = Color.Pink;
+                this.textLogin.BackColor = Color.Pink;
 
                 MessageBox.Show("O login de usuário NÃO PODE SER VAZIO",
                     "ATENÇÃO",
@@ -51,14 +53,14 @@ namespace PojetoForms
                     MessageBoxIcon.Error
                     );
 
-                this.txtLogin.Focus();
+                this.textLogin.Focus();
 
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(textoSenha))
             {
-                this.txtPassword.BackColor = Color.Pink;
+                this.textPassword.BackColor = Color.Pink;
 
                 MessageBox.Show("a senha de usuário NÃO PODE SER VAZIA",
                     "ATENÇÃO",
@@ -66,14 +68,14 @@ namespace PojetoForms
                     MessageBoxIcon.Error
                     );
 
-                this.txtPassword.Focus();
+                this.textPassword.Focus();
 
                 return;
             }
 
             // NO FINAL DO BTN  DEPOIS DAS VALIDAÇÕES
 
-            login usuarioEncontrado = usuarios.FirstOrDefault(
+            usuarioEncontrado = usuarios.FirstOrDefault(
                 usuario => usuario.autenticar(textoLogin, textoSenha)
             );
 
@@ -85,25 +87,38 @@ namespace PojetoForms
                     MessageBoxIcon.Error
                 );
             }
+            else
+            {
+                _ = MessageBox.Show($"Bem-Vindo, {usuarioEncontrado.Nome}");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
+        
 
-        private void txtLogin_TextChanged(object sender, EventArgs e)
+
+        private void textLogin_TextChanged(object sender, EventArgs e)
         {
-            this.txtLogin.BackColor = Color.White;
+            this.textLogin.BackColor = Color.White;
         }
 
-        private void txtPassword_TextChanged(object sender, EventArgs e)
+        private void textPassword_TextChanged(object sender, EventArgs e)
         {
 
-            this.txtLogin.BackColor = Color.White;
+            this.textLogin.BackColor = Color.White;
         }
+
+        private void Rafael(object sender, EventArgs e)
+        {
+            MessageBox.Show("Rafael");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-    }
-}
+       
