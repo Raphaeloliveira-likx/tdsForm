@@ -30,7 +30,7 @@ namespace PojetoForms
                 Application.Exit();
             }
 
-                Application.Run(new frmLogin());
+                Application.Run(new Form1());
         }
     }
 }
